@@ -1,1 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
+.center{
+    text-align: center !important;
+}
+
+.margin-top-5{
+    margin-top: 5px;
+}
+.margin-top-15{
+    margin-top: 15px;
+}
+
+.margin-bottom-5{
+    margin-bottom: 5px;
+}
+.margin-bottom-15{
+    margin-bottom: 15px;
+}
+.general-content{
+    margin-top: 56px;
+}
+.disblock{
+    display: block !important;
+}
+
+/* Padding */
+
+.pd-top-45{
+    padding-top: 45px;
+}
+
+input[type='file']{
+    display: none;
+}
+
+.custom-file-upload{
+    background: #f2f6f8;
+    background: -moz-linear-gradient(top, #f2f6f8 0%, #d8e1e7 50%, #b5c6d0 51%, #e0eff9 100%);
+    background: -webkit-linear-gradient(top, #f2f6f8 0%, #d8e1e7 50%, #b5c6d0 51%, #e0eff9 100%);
+    background: linear-gradient(to bottom, #f2f6f8 0%, #d8e1e7 50%, #b5c6d0 51%, #e0eff9 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f2f6f8', endColorstr='#e0eff9', GradientType=0);
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    border: 1px solid #8dd2f3;
+}
+
+/* Status del usuario */
+.avatar-frame-online{
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(61,208,115,1) 42%, rgba(61,208,115,1) 57%, rgba(39,255,0,1) 84%);
+    text-align: center;
+    padding: 5%;
+    border-radius: 10px;
+    border: 1px solid white;
+    display: inline-block;
+    box-shadow: 0px 0px 4px 1px #888888;
+}
+.avatar-frame-away{
+    background: rgb(255,255,255);
+background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(208,162,61,1) 42%, rgba(208,174,61,1) 57%, rgba(255,222,0,1) 84%);
+    text-align: center;
+    padding: 5%;
+    border-radius: 10px;
+    border: 1px solid white;
+    display: inline-block;
+    box-shadow: 0px 0px 4px 1px #888888;
+}
+.avatar-frame-busy{
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(208,61,61,1) 42%, rgba(208,61,61,1) 57%, rgba(255,0,0,1) 84%);
+    text-align: center;
+    padding: 5%;
+    border-radius: 10px;
+    border: 1px solid white;
+    display: inline-block;
+    box-shadow: 0px 0px 4px 1px #888888;
+}
+.avatar-frame-offline{
+    background: rgb(122,122,122);
+background: linear-gradient(0deg, rgba(122,122,122,1) 0%, rgba(173,173,173,1) 36%, rgba(190,190,190,1) 45%, rgba(255,255,255,1) 63%);
+    text-align: center;
+    padding: 5%;
+    border-radius: 10px;
+    border: 1px solid white;
+    display: inline-block;
+    box-shadow: 0px 0px 4px 1px #888888;
+}

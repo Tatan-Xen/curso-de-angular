@@ -1,0 +1,14 @@
+.login-container{
+    background-image: url('/assets/img/msnbg.jpg');
+    background-size: contain;
+    background-repeat: no-repeat; 
+}
+.avatar-frame-offline{
+    background: rgb(255,255,255);
+    background: linear-gradient(320deg, rgba(255,255,255,1) 16%, rgba(189,189,189,1) 80%);
+    text-align: center;
+    padding: 5%;
+    border-radius: 10px;
+    border: 1px solid white;
+    display: inline-block
+}

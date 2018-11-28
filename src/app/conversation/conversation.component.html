@@ -1,0 +1,43 @@
+<div id="conversation-container">
+  <div class="container pd-top-45">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="avatar-frame-{{friend.status}}">
+          <img src="assets/img/generic_avatar.png" class="avatar-image img-fluid">
+        </div>
+        <div class="avatar-frame-online">
+          <img src="assets/img/generic_avatar.png" class="avatar-image img-fluid">
+        </div>
+
+      </div>
+      <div class="col-md-9">
+
+        <div>
+          <h3>{{friend.nick}}</h3><p>({{friend.status}})</p>
+        </div>
+        <hr />
+        <div style="height: 350px;">
+          Chat
+
+        </div>
+        <div>
+            <div>
+                <label fixed>Nombre</label>
+                <input class="form-control" type="text">
+              </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <p>
+    {{friend | json}}
+  </p>
+  <p>
+    {{price | number: '1.2-2'}}
+  </p>
+  <p>
+    {{today | date}}
+  </p>
+</div>

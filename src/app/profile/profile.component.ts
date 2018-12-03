@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'firebase';
+import { User } from '../interfaces/user';
 import { UserService } from '../services/user.service';
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
     this.authenticationService.getStatus().subscribe((status) => {
       this.userService.getUserById(status.uid).valueChanges().subscribe((data: User) => {
         this.user = data;
-        console.log(this.user);
+        console.log("Usuario:", this.user);
       }, (error) => {
         console.log(error);
       });

@@ -9,20 +9,19 @@ import { User } from '../interfaces/user';
   styleUrls: ['./conversation.component.css']
 })
 export class ConversationComponent implements OnInit {
-  friendID: any;
-  friends: User[];
+  friendId: any;
   friend: User;
-  price: number = 78;
-  today: any = Date.now();
   constructor(private activatedRoute: ActivatedRoute,
     private userService: UserService) {
-      // this.friends = this.userService.getFriends();
-      this.friendID = this.activatedRoute.snapshot.params['uid'];
+      this.friendId = this.activatedRoute.snapshot.params['uid'];
       //El objeto del amigo seleccionado
-      this.friend = this.friends.find((record) => {
-        return record.uid == this.friendID
+      this.userService.getUserById(this.friendId).valueChanges()
+      .subscribe((data: User)=>{
+        this.friend = data;
+      },(error)=>{
+        console.error(error);
       })
-
+   
       console.log(this.friend);
   }
 

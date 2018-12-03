@@ -17,15 +17,15 @@
       <div class="col-md-9">
         <div>
           <label fixed>Nombre</label>
-          <input class="form-control" type="text">
+          <input [(ngModel)]="user.nick" class="form-control" type="text">
         </div>
         <div>
           <label fixed>Subnick</label>
-          <input class="form-control" type="text">
+          <input [(ngModel)]="user.subnick" class="form-control" type="text">
         </div>
         <div>
           <label fixed>Email</label>
-          <input class="form-control" type="email" disabled>
+          <input [(ngModel)]="user.email" class="form-control" type="email" disabled>
         </div>
         <div>
             <label fixed>Status</label>

@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(private userService: UserService, private authenticationService: AuthenticationService, private router: Router) {
     this.userService.getUsers().valueChanges().subscribe((data: User[]) => {
       this.friends = data;
-    }, (error) => {
+    },(error) => {
       console.log(error);
     });
   }

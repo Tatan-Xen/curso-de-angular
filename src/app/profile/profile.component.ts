@@ -25,5 +25,12 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  saveSettings(){
+    this.userService.editUser(this.user).then(()=>{
+      alert("Cambios guardados")
+    }).catch((error)=>{
+      alert('Hubo un error');
+      console.error(error);
+    })
+  }
 }

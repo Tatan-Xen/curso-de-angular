@@ -3,6 +3,8 @@ import { User } from 'firebase';
 import { UserService } from '../services/user.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { FirebaseStorage } from '@angular/fire';
+import { AngularFireStorage } from 'angularfire2/storage';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +15,8 @@ export class ProfileComponent implements OnInit {
   user: User;
   imageChangedEvent: any = '';
   croppedImage: any = '';
-  constructor(private userService: UserService, private authenticationService: AuthenticationService) {
+  picture: any;
+  constructor(private userService: UserService, private authenticationService: AuthenticationService, private firebaseStorage: AngularFireStorage) {
     this.authenticationService.getStatus().subscribe((status) => {
       this.userService.getUserById(status.uid).valueChanges().subscribe((data: User) => {
         this.user = data;
@@ -29,12 +32,30 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
   }
   saveSettings() {
-    this.userService.editUser(this.user).then(() => {
-      alert("Cambios guardados")
-    }).catch((error) => {
-      alert('Hubo un error');
-      console.error(error);
-    })
+    if(this.croppedImage){
+      const currentPictureId = Date.now();
+      const pictures = this.firebaseStorage.ref('pictures/'+ currentPictureId +'.jpg').putString(this.croppedImage, 'data_url');      
+      pictures.then((result)=>{
+        this.picture = this.firebaseStorage.ref('pictures/'+ currentPictureId +'.jpg').getDownloadURL();
+        this.picture.subscribe((p)=>{
+          this.userService.setAvatar(p, this.user.uid).then(()=>{
+            alert('Avatar subido correctamente');
+          }).catch((error)=>{
+            alert('Hubo un error al tratar de subir la imagen');
+            console.error(error);
+          })
+        })
+      }).catch((error)=>{
+        console.error(error);
+      })
+    }else{
+      this.userService.editUser(this.user).then(() => {
+        alert("Cambios guardados")
+      }).catch((error) => {
+        alert('Hubo un error');
+        console.error(error);
+      })
+    }
   }
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;

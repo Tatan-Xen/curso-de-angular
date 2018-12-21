@@ -1,6 +1,6 @@
 <div id="conversation-container">
   <div class="container pd-top-45">
-    <div class="row">
+    <div class="row" *ngIf="friend">
       <div class="col-md-3">
         <div class="avatar-frame-{{friend.status}}">
           <img src="assets/img/generic_avatar.png" class="avatar-image img-fluid">
@@ -23,7 +23,7 @@
         <div>
             <div>
                 <label fixed>Nombre</label>
-                <input class="form-control" type="text">
+                <input [(ngModel)]="textMessage" (keyup.enter)="sendMessage()" class="form-control" type="text">
               </div>
         </div>
 

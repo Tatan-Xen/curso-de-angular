@@ -11,9 +11,20 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  user: User;
   friends: User[];
   query: string = '';
   constructor(private userService: UserService, private authenticationService: AuthenticationService, private router: Router) {
+    this.authenticationService.getStatus().subscribe((status)=>{
+      this.userService.getUserById(status.uid).valueChanges().subscribe((data: User)=>{
+        this.user = data;
+      },(error)=>{
+        console.error(error)
+      })
+    },(error)=>{
+      console.error(error);
+    })
+    
     this.userService.getUsers().valueChanges().subscribe((data: User[]) => {
       this.friends = data;
     },(error) => {

@@ -18,7 +18,10 @@
         <hr />
         <div style="height: 350px;">
           Chat
-
+          <div class="messageGroup" *ngFor="let m of conversation">
+            <b>{{getUserNickById(m.sender)}}</b>dice: <br />
+            <span>{{m.text}}</span>
+          </div>
         </div>
         <div>
             <div>

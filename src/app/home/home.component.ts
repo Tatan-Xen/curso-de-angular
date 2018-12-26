@@ -13,11 +13,21 @@ import { RequestsService } from '../services/requests.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  user: User;
   friends: User[];
   query: string = '';
   friendEmail: string = '';
-  user: User;
   constructor(private userService: UserService, private authenticationService: AuthenticationService, private router: Router, private modalService: NgbModal, private requestsServices: RequestsService) {
+    this.authenticationService.getStatus().subscribe((status)=>{
+      this.userService.getUserById(status.uid).valueChanges().subscribe((data: User)=>{
+        this.user = data;
+      },(error)=>{
+        console.error(error)
+      })
+    },(error)=>{
+      console.error(error);
+    })
+    
     this.userService.getUsers().valueChanges().subscribe((data: User[]) => {
       this.friends = data;
     },(error) => {

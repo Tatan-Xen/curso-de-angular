@@ -1,16 +1,16 @@
 <div id="home-container">
   <div class="white-border-glass-box">
     <div class="home-head-container">
-      <div class="row">
+      <div class="row" *ngIf="user">
         <div class="col-md-auto">
           <div class="avatar-frame-online">
-              <img src="assets/img/generic_avatar.png" id="home-avatar-picture">
+              <img src="{{ user.avatar || 'assets/img/generic_avatar.png'}}" id="home-avatar-picture">
           </div>
         </div>
         <div class="col">
-          <b>Sebastián</b>
+          <b>{{user.nick}}</b>
           <div>
-            <span>Online</span><br/>
+            <span>{{user.status}}</span><br/>
             <span>(Escribir mensaje personal)</span><br/>
             <a (click)="logout()">Cerrar Sesión</a>
           </div>

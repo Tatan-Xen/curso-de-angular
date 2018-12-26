@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { RequestComponent } from './modals/request/request.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 const appRoutes: Routes = [
   {path:"", component: HomeComponent},
@@ -51,8 +52,10 @@ const appRoutes: Routes = [
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     HttpClientModule,
+    friednsRequest,
     NgbModule,
-    BootstrapModalModule.forRoot({container: document.body})
+    BootstrapModalModule.forRoot({container: document.body}),
+    ImageCropperModule
   ],
   providers: [],
   bootstrap: [AppComponent],

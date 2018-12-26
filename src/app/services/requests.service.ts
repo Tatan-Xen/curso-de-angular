@@ -18,6 +18,6 @@ export class RequestsService {
   }
   getRequestForEmail(email){
     const cleanEmail = email.replace('.',',');
-    return this.angularFireDatabase.list('request/'+cleanEmail);
+    return this.angularFireDatabase.list('requests/'+cleanEmail);
   }
 }

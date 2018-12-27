@@ -62,6 +62,22 @@ export class HomeComponent implements OnInit {
     }, (reason) => {
     });
   }
+  openMessage(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    }, (reason) => {
+    });
+  }
+
+  setMessage(){
+    this.userService.editUser(this.user).then(()=>{
+      alert("Se modifico con exito su mensaje personal")
+    }).catch((error)=>{
+      alert("Hubo un error")
+      console.error(error);
+    })
+  }
+
+
   sendRequest(){
     const request = {
       timestamp: Date.now(),

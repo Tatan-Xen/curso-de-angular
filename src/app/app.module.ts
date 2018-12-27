@@ -23,6 +23,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { RequestComponent } from './modals/request/request.component';
 import { ContactComponent } from './contact/contact.component';
+import { FriendComponent } from './friend/friend.component';
 
 const appRoutes: Routes = [
   {path:"", component: HomeComponent},
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     MenuComponent,
     SearchPipe,
     RequestComponent,
-    ContactComponent
+    ContactComponent,
+    FriendComponent,
   ],
   imports: [
     BrowserModule,

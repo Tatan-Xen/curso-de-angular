@@ -11,7 +11,7 @@
           <b>{{user.nick}}</b>
           <div>
             <span>{{user.status}}</span><br/>
-            <span>(Escribir mensaje personal)</span><br/>
+            <span (click)="openMessage(message)">({{user.message  || 'Escribir mensaje personal'}})</span><br/>
             <a (click)="logout()">Cerrar Sesión</a>
           </div>
         </div>
@@ -32,10 +32,6 @@
     <b *ngIf="user && user.friends">Amigos ({{user.friends.length}} / {{user.friends.length}})</b>
     <div *ngIf="user && user.friends">
         <app-contact class="col-md-12" *ngFor="let user of user.friends" [uid]="user"></app-contact>
-        <!-- <span routerLink="/conversation/{{user.uid}}">
-          <img class="status-icon" src="../../assets/img/logo_live_{{user.status}}.png"><b>{{user.nick}}</b> - {{user.subnick || 'Sin Apodo'}}
-          <small>{{user.email}}</small>
-        </span> -->
   </div>
   </div>
 </div>
@@ -58,3 +54,23 @@
     <button type="button" class="btn btn-outline-dark" (click)="sendRequest()">Guardar</button>
   </div>
 </ng-template>
+
+
+<ng-template #message let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Mensaje personal</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="">
+        <b>Esctibe tu mensaje personal</b>
+        <input type="text" class="form-control" placeholder="Mensaje personal" [(ngModel)]="user.message" (keyup.enter)="setMessage()">
+  
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="setMessage()">Guardar</button>
+    </div>
+  </ng-template>

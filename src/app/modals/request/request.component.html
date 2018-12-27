@@ -10,7 +10,7 @@
           <img src="assets/img/generic_avatar.png" class="img-fluid" />
         </div>
         <div class="col-md-9">
-          <b>{{currentRequest.sender}}</b>
+          <app-friend [uid]="currentRequest.sender"></app-friend>
           <small>Te han enviado esta solicitud</small>
         </div>
         <hr />

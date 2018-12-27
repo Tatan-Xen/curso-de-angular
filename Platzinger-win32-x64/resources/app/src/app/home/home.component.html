@@ -1,0 +1,76 @@
+<div id="home-container">
+  <div class="white-border-glass-box">
+    <div class="home-head-container">
+      <div class="row" *ngIf="user">
+        <div class="col-md-auto">
+          <div class="avatar-frame-online">
+              <img src="{{ user.avatar || 'assets/img/generic_avatar.png'}}" id="home-avatar-picture">
+          </div>
+        </div>
+        <div class="col">
+          <b>{{user.nick}}</b>
+          <div>
+            <span>{{user.status}}</span><br/>
+            <span (click)="openMessage(message)">({{user.message  || 'Escribir mensaje personal'}})</span><br/>
+            <a (click)="logout()">Cerrar Sesión</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Contenido inferior -->
+  <div class="white-container-padded margin-top-15">
+    <div class="row">
+      <div class="col">
+        <input class="form-control" type="text" placeholder="Buscar amigo" [(ngModel)]="query">
+      </div>
+      <div class="col-md-auto">
+        <img (click)="open(content)" class="icon" src="assets/img/logo_live_add.png">
+      </div>
+    </div>
+    <hr />
+    <b *ngIf="user && user.friends">Amigos ({{user.friends.length}} / {{user.friends.length}})</b>
+    <div *ngIf="user && user.friends">
+        <app-contact class="col-md-12" *ngFor="let user of user.friends" [uid]="user"></app-contact>
+  </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Agregar amigo</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="">
+      <b>Ingresa el email de tu amigo</b>
+      <input type="email" class="form-control" placeholder="Email" [(ngModel)]="friendEmail" (keyup.enter)="sendRequest()">
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="sendRequest()">Guardar</button>
+  </div>
+</ng-template>
+
+
+<ng-template #message let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Mensaje personal</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="">
+        <b>Esctibe tu mensaje personal</b>
+        <input type="text" class="form-control" placeholder="Mensaje personal" [(ngModel)]="user.message" (keyup.enter)="setMessage()">
+  
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="setMessage()">Guardar</button>
+    </div>
+  </ng-template>

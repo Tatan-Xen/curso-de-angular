@@ -1,0 +1,19 @@
+#conversation-container{
+    background-image: url('/assets/img/msnbg.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.icon{
+    width: 2em;
+}
+.send-image{
+    height: 2em;
+}
+
+.avatar-image{
+    width: 187px;
+    height: 187px;
+}
+.chat{
+    overflow-y: scroll;
+}

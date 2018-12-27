@@ -1,0 +1,58 @@
+<div id="conversation-container" [ngClass]="{'shaker' : shake}">
+  <div class="container pd-top-45">
+    <div class="row" *ngIf="friend">
+      <div class="col-md-3">
+        <div class="avatar-frame-{{friend.status}}">
+          <img src="{{ friend.avatar ||'assets/img/generic_avatar.png'}}" class="avatar-image img-fluid">
+        </div>
+        <div class="avatar-frame-online">
+          <img src="{{ user.avatar || 'assets/img/generic_avatar.png'}}" class="avatar-image img-fluid">
+        </div>
+
+      </div>
+      <div class="col-md-9">
+
+        <div>
+          <h3>{{friend.nick}}</h3><p>({{friend.status}})</p>
+        </div>
+        <hr />
+        <div style="height: 350px;" class="chat">
+          Chat
+          <div class="messageGroup" *ngFor="let m of conversation">
+            <b>{{getUserNickById(m.sender)}}</b>dice: <br />
+            <span *ngIf="m.type != 'picture'">{{m.text}}</span>
+            <img *ngIf="m.type == 'picture'" src="{{m.text}}">
+          </div>
+        </div>
+        <div>
+            <div>
+                <label fixed>Nombre</label>
+                <input [(ngModel)]="textMessage" (keyup.enter)="sendMessage()" class="form-control" type="text">
+                <div class="icon" (click)="sendZumbido()">
+                  <img src="assets/img/zumbido.png" class="icon">
+                </div>
+                <img [src]="croppedImage">
+                <button *ngIf="croppedImage" (click)="sendImage()">Enviar imagen</button>
+                <image-cropper
+                [imageChangedEvent]="imageChangedEvent"
+                [maintainAspectRatio]="true"
+                [aspectRatio]="1 / 1"
+                [resizeToWidth]="128"
+                format="png"
+                (imageCropped)="imageCropped($event)"
+                (imageLoaded)="imageLoaded()"
+                (loadImageFailed)="loadImageFailed()"
+              ></image-cropper>
+              <img [src]="croppedImage" class="picture">
+                <div *ngIf="!croppedImage" class="send-image">
+                    <label class="custom-file-upload">
+                        <input type="file" class="send-image" (change)="fileChangeEvent($event)">
+                        Enviar imagen
+                    </label>
+                  </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
